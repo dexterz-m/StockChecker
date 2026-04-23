@@ -1,0 +1,16 @@
+@host = http://localhost:5231
+
+GET {{host}}/items
+Accept: application/json
+
+###
+
+POST {{host}}/items
+Content-Type: application/json
+
+{
+  "name": "Ice Cream",
+  "quantity": 5,
+  "expiryDate": "2026-05-01"
+}
+
