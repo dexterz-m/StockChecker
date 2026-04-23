@@ -1,0 +1,17 @@
+body {
+    font-family: Arial;
+    margin: 40px;
+}
+
+.form input {
+    margin: 5px;
+    padding: 5px;
+}
+
+.item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}

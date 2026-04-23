@@ -4,11 +4,29 @@ using FreezerInventory.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Database
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=freezer.db"));
 
+// Cors part
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("allowAll", policy =>
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
+// static files part
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+// Cors part
+app.UseCors("allowAll");
+
+// API nd points
 app.MapGet("/items", async (AppDbContext db) =>
     await db.FreezerItems.ToListAsync());
 
